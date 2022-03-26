@@ -11,33 +11,40 @@
           </div>
           <CENTER> <h3 class="h6" >Buyer</h3></CENTER>
           <br>
+<form class="form"  @submit="formSubmit">
+
           <div >
+            
             <div class="form-group">
                 
-              <label class="form"  for="exampleInputEmail1">Email address</label>
+              <label class="form"  for="exampleInputEmail1" >Email address</label>
               <input
                 type="email"
                 class="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
+                v-model="email"
               />
             </div>
             <div class="form-group">
               <label class="form" for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" />
+              <input type="password" class="form-control" id="exampleInputPassword1" 
+                v-model="password"
+              />
               <br>
               <div class="form-group">
                  <center>
               
-                        <router-link to="/" ><button type="submit" class="btn btn-primary btn-block">Login</button></router-link> 
+                        <button type="submit"  class="btn btn-primary btn-block"  @click="formSubmit">Login</button>
 
                  </center>
                </div>
+               <center>
 <div class="a-divider a-divider-break"><h5>New to Click Quick?</h5></div>
-<router-link to="/HomeUser" >
+<router-link to="/UserSignUp" >
 <span id="auth-create-account-link" class="a-button a-button-span12 a-button-base"><span class="a-button-inner"><a id="createAccountSubmit" tabindex="6" href="" class="a-button-text">
           Create your Click Quick account
-        </a></span></span></router-link>
+        </a></span></span></router-link></center>
 
 
 
@@ -46,10 +53,10 @@
               <p>Create an Account</p> -->
                <div class="form-group">
                  <center>
-                        <router-link to="/MerchantSignUp" ><button type="submit" class="btn btn-primary btn-block">Sign Up as Merchant</button></router-link> 
+                        <router-link to="/MerchantSignUp" ><button class="btn btn-primary">Sign Up as Merchant</button></router-link> 
 
                  <!-- <button @click="login()" type="submit" class="btn btn-primary btn-block">Sign Up as Merchant</button> -->
-                        <router-link to="/MerchantLogin" ><button type="submit" class="btn btn-primary btn-block">Login as Merchant</button></router-link> 
+                        <router-link to="/MerchantLogin" ><button  class="btn btn-primary ">Login as Merchant</button></router-link> 
 
                  </center>
                </div>
@@ -57,6 +64,12 @@
            
          
           </div>
+
+
+
+</form>
+
+
            </div>
             
           </div>
@@ -73,10 +86,59 @@
   
 </template>
 <script>
-
+import { mapActions } from "vuex";
+import { mapGetters } from "vuex";
+import swal from 'sweetalert';
 export default {
    name: 'UserLogin',
    
+data(){
+
+return {
+
+
+email: '',
+
+password: '',
+
+
+
+// productCategory: "Men"
+
+}
+
+},
+computed: {
+    ...mapGetters(["getUserName"]),
+  },
+  
+methods: {
+ ...mapActions(["getusername"]),
+
+formSubmit(e) {
+  e.preventDefault();
+ this.axios.get(`http://10.20.2.203:8082/check?username=${this.email}&password=${this.password}`).then(resp=>{
+        console.log(resp.data);
+        console.log("hello")
+        if(resp.data.result==true){
+          // console.log("sucess")
+          this.getusername(this.email)
+          this.$router.push("/HomeUser")
+        }else{
+          // alert("resp.data.message")
+          swal({
+            title:"LOGIN FAILED",
+            icon:"success",
+            button:"done"
+          })
+        }
+        
+      })
+
+}
+
+}
+
   
 }
 </script>
@@ -115,7 +177,7 @@ margin-top: 10px;
   height: 30px;
   width: 300px;
   /* margin-left: 10px; */
-  margin-left: -80px;
+  margin-left: -20px;
 
    /* justify-content: space-around; */
   
@@ -126,7 +188,7 @@ margin-top: 10px;
 
 }
 .form{
-  margin-left: -80px;
+  margin-left: -10px;
   font-weight: bold;
   font-family: 'Times New Roman', Times, serif;
 
@@ -135,7 +197,7 @@ margin-top: 10px;
  /* background: green; */
    margin-top:5px;
    /* justify-content: space-around; */
-   width: 200px;
+   width: 280px;
    margin-left: -25px;
    color:aliceblue;
   
@@ -149,7 +211,7 @@ margin-top: 10px;
     padding-top: 1px;
     margin-bottom: 14px;
     line-height: 0;
-  margin-left: -20px;
+  margin-left: 20px;
   width: 200px;
 
 }
@@ -172,9 +234,12 @@ div {
     padding: 0 10px 0 11px;
     text-align: center;
     white-space: nowrap;
-   margin-left: -20px;
+   margin-left: 20px;
   width: 200px;
   padding-bottom: 10px;
 
+}
+.form{
+  margin-left: -40px;
 }
 </style>

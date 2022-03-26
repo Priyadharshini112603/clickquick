@@ -1,23 +1,34 @@
 <template>
   <v-app class="body">
-    <!-- <HeaderPage/> -->
-  
-    <!-- <RightSideBar /> -->
-    <!-- <v-container > -->
-        <div class="container">
-     <v-toolbar >
-      <!-- <img src="icon2.png" alt="" width="2px"> -->
-    
-       
-       <h1 class="head1">CLICK QUICK</h1>
-    
+     <v-toolbar class="tool">
+        <div class="nightlihe"><h2>CLICK QUICK</h2></div>
+
         <v-spacer></v-spacer>
-         <router-link to="/" >
-      <v-btn dark class="changewith mb-3">
-      <v-icon class="con">mdi-logout</v-icon> </v-btn ><br /></router-link>
-      </v-toolbar>
-      <br> 
-        </div>
+
+       
+       
+   
+    
+      <!-- <router-link to="/Account" ><v-icon class="con">mdi-cart-outline</v-icon> </v-btn ></router-link> -->
+      <router-link to="/" >
+ <v-btn  class="change ">
+      <v-icon class="con">mdi-home-outline</v-icon> </v-btn ><br /></router-link>
+      <router-link to="/Account" >
+<v-btn  class="change ">
+      <v-icon class="con">mdi-account-circle</v-icon> </v-btn ></router-link>
+     
+
+
+       <router-link to="/MerchantLogin" >
+      <v-btn  class="change">
+      <v-icon class="con">mdi-logout</v-icon> </v-btn ></router-link>
+
+       <router-link to="/AboutUs" >
+      <v-btn class="change">
+      <v-icon class="con">mdi-account-star</v-icon> </v-btn ></router-link>
+    
+      </v-toolbar> 
+        
 
 
  
@@ -28,14 +39,16 @@
 
 <div class="conatiner">
 <div class="wrap">
+		<router-link to="/AddProduct" >
 	
 	<div class="box one">
-		
 		<h1>ADD PRODUCTS</h1>
 		<div class="poster p1">
 			<h4>A</h4>
 		</div>
 	</div>
+		</router-link >
+		<router-link to="/ListProduct" >
 	
 	<div class="box two">
 		
@@ -44,6 +57,8 @@
 			<h4>L</h4>
 		</div>
 	</div>
+		</router-link>
+		<router-link to="/AccountMerchant" >
 	
 	<div class="box three">
 		
@@ -52,6 +67,8 @@
 			<h4>P</h4>
 		</div>
 	</div>
+		</router-link>
+		<router-link to="/AboutUs" >
 	
 	<div class="box five">
 		
@@ -60,6 +77,7 @@
 			<h4>M</h4>
 		</div>
 	</div>
+		</router-link>
 
 </div>
 </div>
@@ -321,7 +339,24 @@ this.getItem()
 
 
 
+.tool{
+  margin-top:10px;
+  margin-left:10px;
+  margin-right:10px;
+  height:1px;
+  flex:none;
 
+}
+.nightlihe{
+	font-size:20px;
+	font-weight: bold;
+	text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #f0bed7, 0 0 20px #d3acbf, 0 0 30px #ecdae6, 0 0 40px #cfa3b9, 0 0 50px #ecc8da, 0 0 55px #ebd4df;
+    /* letter-spacing: 5px; */
+    opacity:1;
+    color:rgb(43, 39, 41);
+    /* font-family:cursive */
+    font-family: 'Times New Roman', Times, serif;
+}
 
 
 

@@ -1,77 +1,53 @@
 <template> 
-
-<!-- <div class="cart">
-  <div class="hello">
-         <img class="laptop-photo" :src="product.image" alt="">
-        <p class="category details">Category: {{product.category}}</p>
-         <p class="id details" >ID: {{product.id}}</p>
-         <p class="title details">{{product.title}}</p>
-         <p class="description details">Description: {{product.description}}</p>
-         <p class="price details">Price: Rs{{product.price}}</p>
-         
-         <button class="cart-btn">Add to cart</button>
-    </div>
-</div> -->
-
-
-
-
-
-
 <v-app class="body">
-      <RightSideBar />
-  <v-container >
-        
-     <v-toolbar >
-      <!-- header1 -->
-       
-        <h1 class="head1">CLICK QUICK</h1>
-        
-        <v-spacer></v-spacer>
-        
-        <h1 class="search"><v-text-field
-          label="Find It ... Love It ... Buy It ..."
-          class="pt-8 d-none d-sm-flex"
-        
-          
-          prepend-inner-icon="mdi-magnify"
-          
-          
-          
-          rounded
-          outlined
-         
-        ></v-text-field></h1>
-        
-
-      </v-toolbar>
-      <br> 
-    
-
-      <!-- <h4>{{product.title}}</h4>
-      
-    
-       <img class="laptop-photo" :src="product.image" alt="">
-      
-      <div class="product-info">
-        <div class="product-price">Price: Rs{{product.price}}</div>
-        <a href="#" class="product-button">Add to Cart</a>
-      </div> -->
-    
- <!-- <v-app-bar class="vapp" > -->
-        <v-tabs >
-          <!-- <v-tabs-slider color="gold"></v-tabs-slider> -->
+    <!-- <HeaderPage/> -->
   
-          <v-tab class="black--text">CART</v-tab>
-          
-<!--           
-          <v-tab class="withoutupercase">Transactions</v-tab>
-          <v-tab class="withoutupercase">Engagement Rate</v-tab> -->
-        </v-tabs>
+    <!-- <RightSideBar /> -->
+      <v-toolbar class="tool">
+        <div class="nightlihe"><h2>CLICK QUICK</h2></div>
+
         <v-spacer></v-spacer>
-        
-      <!-- </v-app-bar> -->
- </v-container>
+
+        <h1 class="search">
+          <v-text-field
+            label="Find It ... Love It ... Buy It ..."
+            class="pt-8 d-none d-sm-flex"
+         
+            rounded
+            outlined
+          ></v-text-field>
+        </h1>
+        <router-link to="/" >
+ <v-btn class="change ">
+      <v-icon class="con">mdi-magnify</v-icon> </v-btn ></router-link>
+   
+        <router-link to="/cart" >
+ <v-btn class="change ">
+      <v-icon class="con">mdi-cart-outline</v-icon> </v-btn ></router-link>
+      <!-- <router-link to="/Account" ><v-icon class="con">mdi-cart-outline</v-icon> </v-btn ></router-link> -->
+      <router-link to="/" >
+ <v-btn  class="change ">
+      <v-icon class="con">mdi-home-outline</v-icon> </v-btn ><br /></router-link>
+      <router-link to="/Account" >
+<v-btn  class="change ">
+      <v-icon class="con">mdi-account-circle</v-icon> </v-btn ></router-link>
+      
+<router-link to="/UserLogin" >
+      <v-btn class="change">
+      <v-icon class="con">mdi-login</v-icon> </v-btn ><br /></router-link>
+
+
+       <router-link to="/" >
+      <v-btn  class="change">
+      <v-icon class="con">mdi-logout</v-icon> </v-btn ></router-link>
+
+       <router-link to="/AboutUs" >
+      <v-btn class="change">
+      <v-icon class="con">mdi-account-star</v-icon> </v-btn ></router-link>
+    
+      </v-toolbar>
+     
+          
     <main>
     <div class="basket">
        
@@ -87,32 +63,35 @@
         
       </div>
           <div class="remove1">
-          <button>Remove All</button>
+          <button @click="removeall()">Remove All</button>
         </div>     
-<div class="basket-product" v-for="product in getProducts" :key="product" >
-
-    
-         
-        <div class="item">
-          
+<div class="basket-product" v-for="product in cart" :key="product" >
+<!-- <div class="basket-product" v-for="product in getProducts" :key="product" > -->
+        <div class="item"> 
           <div class="product-image">
-            <!-- <img src="https://assets.ajio.com/medias/sys_master/root/20210403/DHYH/60689ce4aeb269a9e3357699/-473Wx593H-461758480-multi-MODEL.jpg" alt="Placholder Image 2" class="product-frame" width="100px" height="100px"> -->
-           <img  :src="product.image" alt="Placholder Image 2" class="product-frame" width="100px" height="100px">
+           <!-- <img  :src="product.image" alt="Placholder Image 2" class="product-frame" width="100px" height="100px"> -->
+              <img class="laptop-photo" :src="product.image" alt="" />
+
           </div>
           <div class="product-details">
-            <!-- <h1><strong><span class="item-q">Quantity</span> x product name produt title</strong></h1> -->
-             <h1><strong><span class="item-q">Quantity</span> x {{product.productT}}</strong></h1>
-            <p><strong>Color Size</strong></p>
-            <p>Product Code </p>
+             <h1><strong><span class="item-q">{{product.quantity}}</span> x {{product.productName}}</strong></h1>
+            <p><strong>Sold By:{{product.merchantName}}</strong></p>
+            <!-- <p>Product Code </p> -->
           </div>
         </div>
-        <div class="price">{{product.productId}}</div>
+        <div class="price">{{product.price*2}}</div>
         <div class="quantity">
-          <input type="number" value="1" min="1" class="quantity-field">
-        </div>
-        <!-- <div class="subtotal">{{product.price}}</div> -->
+          <input type="number"   v-model=product.quantity min="1" class="quantity-field">
+
+          <button @click="handleItem(product.quantity, product.id)">update</button>
+          
+          </div>
+          <!-- <button onclick="handleItem()">CONFIRM</button> -->
+ 
+        
         <div class="remove">
-          <button>Remove</button>
+        <div class="subtotalprice" > ₹ {{product.price*2*product.quantity}}</div>
+          <button @click="remove(product.cartId)">Remove</button>
         </div>
        
       
@@ -125,7 +104,26 @@
            <div class="summary-total-items"><span class="total-items"></span>Proceed to Buy (1 Items)</div>
         <div class="summary-subtotal">
           <div class="subtotal-title">Subtotal</div>
-          <div class="subtotal-value final-value" id="basket-subtotal">130.00</div>
+          <div class="subtotal-value final-value" id="basket-subtotal">{{this.total*2}}</div>
+          
+        </div>
+         
+       
+
+        <!-- <div class="summary-delivery">
+          <select name="delivery-collection" class="summary-delivery-selection">
+              <option value="0" selected="selected">Select Collection or Delivery</option>
+             <option value="collection">Collection</option>
+             <option value="first-class">Royal Mail 1st Class</option>
+             <option value="second-class">Royal Mail 2nd Class</option>
+             <option value="signed-for">Royal Mail Special Delivery</option>
+          </select>
+        </div> -->
+     
+      
+        <div class="summary-subtotal">
+          <div class="subtotal-title">Discount</div>
+          <div class="subtotal-value final-value"  id="basket-subtotal1">- {{this.total}}</div>
           
         </div>
        
@@ -141,7 +139,7 @@
         </div> -->
       <div class="summary-subtotal">
           <div class="total-title">Total</div>
-          <div class="subtotal-value final-value" id="basket-subtotal">130.00</div>
+          <div class="subtotal-value final-value" id="basket-subtotal">{{this.total}}</div>
           
         </div>
        
@@ -155,37 +153,148 @@
 </template>
 
 <script>
-import RightSideBar from "../components/RightSideBar.vue";
+// import RightSideBar from "../components/RightSideBar.vue";
 import{mapGetters} from 'vuex';
 import{mapActions} from 'vuex';
 
+import Vue from 'vue'
 
 export default {
    name: 'CartPage',
    components: {
     // SideBar,
-    RightSideBar,
+    // RightSideBar,
     // HeaderPage
   },
+  data: () => ({
+      cart:[],product:[],cartid:[],total:0
+  }),
   computed:{
-    ...mapGetters(['getProducts'])
+    ...mapGetters(['getCart'])
   },
   created()
   {
 this.getItem()
   },
-  methods: {...mapActions(['getMobileItem']),
+  methods: {...mapActions(['getcartproduct']),
 
   getItem()
     {
-      this.getMobileItem()
+      Vue.axios.get('http://10.20.2.203:8084/cart?userId=1').then(resp=>{
+        // commit('setProducts',resp.data)
+        this.cart=resp.data.data;
+        
+        console.log(resp.data.data[0].cartId)
+        console.log(this.cartid)
+        this.cartid=resp.data.data.cartId;
+
+        console.log(resp.data.data);
+        for(let i=0;i<this.cart.length ; i++){
+            this.total += this.cart[i].quantity *this.cart[i].price;
+        }
+        console.log(this.total)
+
+      })
     },
+    handleItem(quantitys,id)
+    {
+      // Vue.axios.update('http://10.20.2.203:8084/updatecart?id=1').then(resp=>{
+      //   this.cart=resp.data.data;
+
+
+let currentObj = this;
+
+console.log(this)
+
+this.axios.put(`http://10.20.2.203:8084/updatecart?id=${id}`, {
+quantity:quantitys,
+
+
+// repassword:this.repassword,
+
+
+
+
+
+
+
+// userPhone: "3434343432"
+
+
+
+})
+
+.then(function (response) {
+
+currentObj.output = response.data;
+
+})
+
+.catch(function (error) {
+
+currentObj.output = error;
+console.log("error")
+
+
+});
+this.total=0;
+for(let i=0;i<this.cart.length ; i++){
+            this.total += this.cart[i].quantity *this.cart[i].price;
+        }
+        console.log(this.total)
+
+
+},
+    remove(cardid)
+    {
+  
+
+      Vue.axios.delete(`http://10.20.2.203:8084/delete?id=${cardid}`).then(resp=>{
+        this.cart=resp.data.data;
+        if(resp.data.result==true){
+          // console.log("sucess")
+          this.$router.go()
+        }else{
+          alert("error")
+        }
+
+      })
+
+    },
+    removeall()
+    {
+      Vue.axios.delete(`http://10.20.2.203:8084/deleteAll?userId=1`).then(resp=>{
+        this.cart=resp.data.data;
+        if(resp.data.result==true){
+          // console.log("sucess")
+          this.$router.go()
+        }else{
+          alert("error")
+        }
+
+      })
+
+    
+
+    },
+
+
    
 }
 }
 </script>
 
 <style scoped>
+.subtotalprice{
+  
+  
+  font-size: 16px;
+
+}
+#basket-subtotal1{
+  color: red;
+}
+
 .cart {
   display: flex;
   font-family:'Times New Roman', Times, serif;
@@ -197,14 +306,25 @@ this.getItem()
  background-image: url("https://images.unsplash.com/photo-1614208194190-5bf690ad8a98?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZmFzaGlvbiUyMGJhY2tncm91bmR8ZW58MHx8MHx8&w=1000&q=80");
 
 }
-
-.body{
- /* background-image: url("https://st2.depositphotos.com/3199515/6996/v/950/depositphotos_69967429-stock-illustration-yellow-green-light-background.jpg"); */
-
-
+.givecolor{
+  color: red;
 }
 
+.update{
+ 
 
+  margin: 5px;
+  color:white
+}
+
+.buttoncart{
+  border: 1px solid black;
+  background: green;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  /* cursor:alias; */
+  
+}
 
 .head1{
 	margin: 1em 0 0.5em 0;
@@ -236,15 +356,17 @@ this.getItem()
   /* padding-bottom: 15px; */
 }
 
+
 .black--text{
   /* font-style: italic; */
   font-weight: 900;
   /* background:gold; */
   /* color: white; */
   /* background:gold; */
-/* background:purple; */
-  font-family: 'Times New Roman', Times, serif;
-
+/* background:purple; 
+*/
+margin-left: 30px ;
+font-size: 20px;
 }
 .black--text:hover{
   font-style: italic;
@@ -297,7 +419,7 @@ this.getItem()
 
 .search{
   padding: 15px;
-  width: 820px;
+  width: 620px;
 }
 
 .headcon{
@@ -376,7 +498,7 @@ button,
 .basket-labels,
 .item,
 .price,
-.quantity,
+.quantity,.quantity1,
 .subtotal,
 .basket-product,
 .product-image,
@@ -394,6 +516,10 @@ button,
 
 .hide {
   display: none;
+}
+.quantity1{
+  background: #6cbb82;
+  width: 20px;
 }
 
 main {
@@ -468,7 +594,7 @@ li.subtotal:before {
 }
 
 .price,
-.quantity,
+.quantity,.quantity1,
 .subtotal {
   width: 15%;
    font-family: 'Times New Roman', Times, serif;
@@ -684,6 +810,7 @@ aside {
   .quantity {
     text-align: center;
     width: 34%;
+    
   }
   .quantity-field {
     float: none;
@@ -720,5 +847,22 @@ aside {
     padding: 0 1rem;
   }
 }
+.tool{
+  margin-top:10px;
+  margin-left:10px;
+  margin-right:10px;
+  height:1px;
+  flex:none;
 
+}
+.nightlihe{
+	font-size:20px;
+	font-weight: bold;
+	text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #f0bed7, 0 0 20px #d3acbf, 0 0 30px #ecdae6, 0 0 40px #cfa3b9, 0 0 50px #ecc8da, 0 0 55px #ebd4df;
+    /* letter-spacing: 5px; */
+    opacity:1;
+    color:rgb(43, 39, 41);
+    /* font-family:cursive */
+    font-family: 'Times New Roman', Times, serif;
+}
 </style>

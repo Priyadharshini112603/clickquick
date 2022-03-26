@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import HomeUser from '../views/HomePageUser.vue'
 import HomeMerchant from '../views/HomePageMerchant.vue'
-import CartPage from '../views/CartPage.vue'
+import CartPage from '../views/cart.vue'
 import AccountPage from '../views/AccountPage.vue'
 import SignoutPage from '../views/SignoutPage.vue'
 import AboutUs from '../views/AboutUs.vue'
@@ -17,7 +17,9 @@ import MerchantLogin from '../views/Enter/MerchantLogin.vue'
 import MerchantSignUp from '../views/Enter/MerchantSignUp.vue'
 import UserSignUp from '../views/Enter/UserSignUp.vue'
 import UserLogin from '../views/Enter/UserLogin.vue'
-import addproduct from '../views/product.vue'
+import listproduct from '../views/ListProduct.vue'
+import addproduct from '../views/AddProduct.vue'
+
 
 // import App from './App.vue'
 import Vuex from 'vuex'
@@ -126,10 +128,16 @@ const routes = [
     name: 'HomePageMerchant',
     component: HomeMerchant
   },
+ 
   {
-    path: '/addproduct',
+    path: '/AddProduct',
     name: 'addproduct',
     component: addproduct
+  },
+  {
+    path: '/ListProduct',
+    name: 'listproduct',
+    component: listproduct
   },
 ]
 new Vue({

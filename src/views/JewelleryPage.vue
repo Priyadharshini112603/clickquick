@@ -1,82 +1,97 @@
 <template>
   <v-app class="body">
-    
-    <RightSideBar />
+    <v-toolbar class="tool">
+        <div class="nightlihe"><h2>CLICK QUICK</h2></div>
 
-  <v-container>
-     <v-toolbar >
-      <!-- header1 -->
-       
-        <h1 class="head1">CLICK QUICK</h1>
-        
         <v-spacer></v-spacer>
-        <br>
-        <h1 class="search"><v-text-field
-          label="Find It ... Love It ... Buy It ..."
-          class="pt-8 d-none d-sm-flex"
-        
-          
-          prepend-inner-icon="mdi-magnify"
-          
-          
-          
-          rounded
-          outlined
-          
-        ></v-text-field></h1>
-        
 
-      </v-toolbar>
-      <br> 
-
-  </v-container>
-
-
+        <h1 class="search">
+          <v-text-field
+            label="Find It ... Love It ... Buy It ..."
+            class="pt-8 d-none d-sm-flex"
+         
+            rounded
+            outlined
+          ></v-text-field>
+        </h1>
+        <router-link to="/" >
+ <v-btn class="change ">
+      <v-icon class="con">mdi-magnify</v-icon> </v-btn ></router-link>
    
-<div class = "product-items">
-                    <!-- single product -->
-<div @click="handleProductClick(product1.productId)" v-for="product1 in products" :key="product1" >
+        <router-link to="/cart" >
+ <v-btn class="change ">
+      <v-icon class="con">mdi-cart-outline</v-icon> </v-btn ></router-link>
+      <!-- <router-link to="/Account" ><v-icon class="con">mdi-cart-outline</v-icon> </v-btn ></router-link> -->
+      <router-link to="/" >
+ <v-btn  class="change ">
+      <v-icon class="con">mdi-home-outline</v-icon> </v-btn ><br /></router-link>
+      <router-link to="/Account" >
+<v-btn  class="change ">
+      <v-icon class="con">mdi-account-circle</v-icon> </v-btn ></router-link>
+      
+<router-link to="/UserLogin" >
+      <v-btn class="change">
+      <v-icon class="con">mdi-login</v-icon> </v-btn ><br /></router-link>
 
-                    <div class = "product">
-                        <div class = "product-content">
-                            <div class = "product-img">
-                               <img class="laptop-photo" :src="product1.productImage" alt="">
-                            </div>
-                            <div class = "product-btns">
-                                <button type = "button" class = "btn-cart"> add to cart
-                                    <span><i class = "fas fa-plus"></i></span>
-                                </button>
-                                <button type = "button" class = "btn-buy"> buy now
-                                    <span><i class = "fas fa-shopping-cart"></i></span>
-                                </button>
-                            </div>
-                        </div>
 
-                        <div class = "product-info">
-                            <!-- <div class = "product-info-top"> -->
-                            <center>
-                           
-                                <div class="price">
-                            <p class = "product-price"> &#x20B9;  {{product1.defaultMerchantPrice}}</p>
-                            </div>
-                            <!-- </div> -->
-                            <div  class = "product-name">{{product1.productTitle}}</div>
-                                 <!-- <div class = "product-cat">{{product.category}}</div> -->
-                            <!-- <p class = "product-price">$ 150.00</p> -->
-                            </center>
-                        </div>
+       <router-link to="/" >
+      <v-btn  class="change">
+      <v-icon class="con">mdi-logout</v-icon> </v-btn ></router-link>
 
-                        
-                    </div>
-</div>
-</div>
+       <router-link to="/AboutUs" >
+      <v-btn class="change">
+      <v-icon class="con">mdi-account-star</v-icon> </v-btn ></router-link>
+    
+      </v-toolbar>
+
+
+
+
+
+
+ <div class="product-items">
+      <!-- single product -->
+      <div
+        @click="handleProductClick(product.productId)"
+        v-for="product in products"
+        :key="product"
+      >
+        <div class="product">
+          <div class="product-content">
+            <div class="product-img">
+              <img class="laptop-photo" :src="product.productImage" alt="" />
+            </div>
+            <!-- <div class="product-btns">
+              <button type="button" class="btn-cart">
+                add to cart
+                <span><i class="fas fa-plus"></i></span>
+              </button>
+            </div> -->
+          </div>
+
+          <div class="product-info">
+            <!-- <div class = "product-info-top"> -->
+            <center>
+              <div class="price">
+                <div class="product-price">&#x20B9; {{ product.defaultMerchantPrice}}  <span class="discount">&#x20B9; {{product.defaultMerchantPrice*2}}</span><sub class="sub">  50% off</sub></div>
+              </div>
+              <!-- </div> -->
+              <div class="product-name">{{ product.productName}}</div>
+              <!-- <div class = "product-cat">{{product.category}}</div> -->
+              <!-- <p class = "product-price">$ 150.00</p> -->
+            </center>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
   </v-app>
 </template>
 
 <script>
 
-import RightSideBar from "../components/RightSideBar.vue";
+// import RightSideBar from "../components/RightSideBar.vue";
 
 import{mapActions} from 'vuex';
 import{mapGetters} from 'vuex';
@@ -84,7 +99,7 @@ export default {
    name: 'WomenPage',
 components: {
   
-    RightSideBar,
+    // RightSideBar,
   },
   
   
@@ -96,7 +111,7 @@ components: {
   {
 this.getItem()
 // const productId = this.$route.params.cat
-this.axios.get(`http://10.20.2.193:8999/product/getproductbycategory/?category=${this.category}`).then(resp => {
+this.axios.get(`http://localhost:9001/product/getproductbycategory/?category=${this.category}`).then(resp => {
            this.products = resp.data
             // console.log(resp.data)
 
@@ -121,7 +136,11 @@ this.axios.get(`http://10.20.2.193:8999/product/getproductbycategory/?category=$
 
             // this.$router.push(`/CategoryPage/${productCat}/${productId}`)
             // console.log(productId)
-        }
+        },
+         handleProductClick1(productId) {
+      this.$router.push(`productDetails/${productId}`);
+      console.log(productId);
+    },
   },
   
    data(){
@@ -235,7 +254,7 @@ this.axios.get(`http://10.20.2.193:8999/product/getproductbycategory/?category=$
 
 .search{
   padding: 15px;
-  width: 820px;
+  width: 620px;
 }
 
 .headcon{
@@ -424,7 +443,7 @@ img{
     text-decoration: none;
     font-size: 18px;
     /* text-transform: uppercase; */
-    font-weight: bold;
+    font-weight: 200px;
     align-items: center;
 }
 .product-cat{
@@ -561,6 +580,45 @@ img{
 }
 
 
+
+.product-price {
+  
+  color: rgb(12, 12, 12);
+
+  text-decoration: none;
+  font-size: 25px;
+ 
+  font-weight: bold;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.discount{
+  text-decoration: line-through;
+  color: grey;
+  font-size: 20px;
+}
+.sub{
+  color: #e02c2c;
+}
+
+.tool{
+  margin-top:10px;
+  margin-left:10px;
+  margin-right:10px;
+  height:1px;
+  flex:none;
+
+}
+.nightlihe{
+	font-size:20px;
+	font-weight: bold;
+	text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #f0bed7, 0 0 20px #d3acbf, 0 0 30px #ecdae6, 0 0 40px #cfa3b9, 0 0 50px #ecc8da, 0 0 55px #ebd4df;
+    /* letter-spacing: 5px; */
+    opacity:1;
+    color:rgb(43, 39, 41);
+    /* font-family:cursive */
+    font-family: 'Times New Roman', Times, serif;
+}
 
 
 </style>

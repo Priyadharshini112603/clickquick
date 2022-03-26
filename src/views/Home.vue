@@ -1,9 +1,10 @@
 <template>
   <v-app class="body">
-    <RightSideBar />
+    <!-- <RightSideBar /> -->
       <!-- header -->
-      <v-toolbar>
-        <div class="nightlihe"><h1>CLICK QUICK</h1></div>
+    
+      <v-toolbar class="tool">
+        <div class="nightlihe"><h2>CLICK QUICK</h2></div>
 
         <v-spacer></v-spacer>
 
@@ -11,18 +12,45 @@
           <v-text-field
             label="Find It ... Love It ... Buy It ..."
             class="pt-8 d-none d-sm-flex"
-           append-outer-icon="mdi-magnify"
+          prepend-inner-icon="mdi-magnify"
+         
             rounded
             outlined
           ></v-text-field>
         </h1>
+        <router-link to="/" >
+ <v-btn class="change ">
+      <v-icon class="con">mdi-magnify</v-icon> </v-btn ></router-link>
+   
+        <router-link to="/cart" >
+ <v-btn class="change ">
+      <v-icon class="con">mdi-cart-outline</v-icon></v-btn ></router-link>
+      <!-- <router-link to="/Account" ><v-icon class="con">mdi-cart-outline</v-icon> </v-btn ></router-link> -->
+   
+      <router-link to="/Account" >
+<v-btn  class="change ">
+      <v-icon class="con">mdi-account-circle</v-icon></v-btn ></router-link>
+      
+<router-link to="/UserLogin" >
+      <v-btn class="change">
+      <v-icon class="con">mdi-login</v-icon></v-btn ><br /></router-link>
+
+
+       <router-link to="/" >
+      <v-btn  class="change">
+      <v-icon class="con">mdi-logout</v-icon></v-btn ></router-link>
+
+       <router-link to="/AboutUs" >
+      <v-btn class="change">
+      <v-icon class="con">mdi-account-star</v-icon></v-btn ></router-link>
+    
       </v-toolbar>
       <br />
-    <v-container>
+    
 
       <!-- header2 -->
       <v-app-bar class="vapp">
-        <v-tabs>
+        <!-- <v-tabs> -->
           <v-tab class="black--text" @click="handleMen()"
             >MEN'S CLOTHINGS</v-tab
           >
@@ -35,30 +63,16 @@
           <v-tab class="black--text" @click="handleJewellery()"
             >JEWELLERY</v-tab
           >
-        </v-tabs>
+        <!-- </v-tabs> -->
         <v-spacer></v-spacer>
       </v-app-bar>
-    </v-container>
+    
 
     <!-- banner -->
 
-    <div class="banner">
+    <!-- <div class="banner"> -->
       <div class="container">
         <div class="slider-container has-scrollbar">
-          <div class="slider-item">
-            <img
-              src="banner 16.png"
-              alt="new fashion summer sale"
-              class="banner-img"
-            />
-          </div>
-          <div class="slider-item">
-            <img
-              src="banner17.jpeg"
-              alt="new fashion summer sale"
-              class="banner-img"
-            />
-          </div>
           <div class="slider-item">
             <img
               src="banner-1.jpg"
@@ -74,6 +88,21 @@
               <a href="#" class="banner-btn">Shop now</a>
             </div>
           </div>
+          <div class="slider-item">
+            <img
+              src="banner 16.png"
+              alt="new fashion summer sale"
+              class="banner-img"
+            />
+          </div>
+          <div class="slider-item">
+            <img
+              src="banner17.jpeg"
+              alt="new fashion summer sale"
+              class="banner-img"
+            />
+          </div>
+          
 
           <div class="slider-item">
             <img
@@ -183,7 +212,7 @@
           </div>
         </div>
       </div>
-    </div>
+    <!-- </div> -->
 <v-container>
      <v-tabs 
        
@@ -221,10 +250,10 @@
             <!-- <div class = "product-info-top"> -->
             <center>
               <div class="price">
-                <p class="product-price">&#x20B9; {{ product.price }}</p>
+                <div class="product-price">&#x20B9; {{ product.defaultMerchantPrice}}  <span class="discount">&#x20B9; {{product.defaultMerchantPrice*2}}</span><sub class="sub">  50% off</sub></div>
               </div>
               <!-- </div> -->
-              <div class="product-name">{{ product.title }}</div>
+              <div class="product-name">{{ product.productName}}</div>
               <!-- <div class = "product-cat">{{product.category}}</div> -->
               <!-- <p class = "product-price">$ 150.00</p> -->
             </center>
@@ -236,7 +265,7 @@
 </template>
 
 <script>
-import RightSideBar from "../components/RightSideBar.vue";
+// import RightSideBar from "../components/RightSideBar.vue";
 import { mapActions } from "vuex";
 import { mapGetters } from "vuex";
 
@@ -244,7 +273,7 @@ export default {
   name: "Home",
   data: () => ({}),
   components: {
-    RightSideBar,
+    // RightSideBar,
   },
   computed: {
     ...mapGetters(["getProducts"]),
@@ -294,6 +323,11 @@ export default {
   text-shadow: 0 2px rosybrown, 0 3px #777;
   padding-bottom: 15px;
   color: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
+}
+.discount{
+  text-decoration: line-through;
+  color: grey;
+  font-size: 20px;
 }
 
 .head2 {
@@ -346,7 +380,7 @@ export default {
 }
 .search {
   padding: 15px;
-  width: 720px;
+  width: 420px;
 }
 
 .headcon {
@@ -365,6 +399,14 @@ export default {
   margin-left: auto;
   margin-right: auto;
   padding-top: 5px;
+}
+.vapp{
+   margin-top:10px;
+  margin-left:35px;
+  margin-right:10px;
+  width: 1350px;
+  margin-bottom: 50px;
+
 }
 
 .hello {
@@ -402,7 +444,7 @@ export default {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  gap: 10px;
+  /* gap: 10px; */
   -webkit-border-radius: var(--border-radius-md);
   border-radius: var(--border-radius-md);
   overflow: auto hidden;
@@ -410,12 +452,16 @@ export default {
   -ms-scroll-snap-type: inline mandatory;
   scroll-snap-type: inline mandatory;
   overscroll-behavior-inline: contain;
+  width: 1350px;
+      /* width: 1000px; */
+    margin-left: -100px;
+    /* height: 1000px; */
 }
 
 .slider-item {
   position: relative;
   min-width: 100%;
-  max-height: 50px;
+  max-height: 150px;
   aspect-ratio: 1 / 1;
   -webkit-border-radius: var(--border-radius-md);
   border-radius: var(--border-radius-md);
@@ -425,7 +471,7 @@ export default {
 
 .slider-item .banner-img {
   width: 100%;
-  height: 100%;
+  height: 800px;
   -o-object-fit: cover;
   object-fit: cover;
   -o-object-position: right;
@@ -439,8 +485,8 @@ export default {
   left: 25px;
   right: 25px;
   padding: 20px 25px;
-  -webkit-border-radius: var(--border-radius-md);
-  border-radius: var(--border-radius-md);
+  /* -webkit-border-radius: var(--border-radius-md); */
+  border-radius: 10px;
 }
 
 .banner-subtitle {
@@ -501,7 +547,7 @@ export default {
   max-height: 450px;
   aspect-ratio: 1 / 1;
   border-radius: var(--border-radius-md);
-  overflow: hidden;
+  overflow: auto;
   scroll-snap-align: start;
 }
 
@@ -511,6 +557,7 @@ export default {
   object-fit: cover;
   object-position: right;
 }
+
 
 .banner-content {
   background: rgb(233, 151, 45);
@@ -691,11 +738,14 @@ img {
   color: black;
   display: block;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 16px;
   /* text-transform: uppercase; */
-  font-weight: bold;
+  font-weight:300px;
   align-items: center;
   /* overflow: hidden; */
+}
+.sub{
+  color: #e02c2c;
 }
 .product-cat {
   color: black;
@@ -707,7 +757,7 @@ img {
 }
 .product-price {
   
-  color: rgb(228, 61, 61);
+  color: rgb(12, 12, 12);
 
   text-decoration: none;
   font-size: 25px;
@@ -817,13 +867,24 @@ img {
 
 
 .nightlihe{
-	font-size:50px;
+	font-size:25px;
 	font-weight: bold;
 	text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #f0bed7, 0 0 20px #d3acbf, 0 0 30px #ecdae6, 0 0 40px #cfa3b9, 0 0 50px #ecc8da, 0 0 55px #ebd4df;
-    letter-spacing: 5px;
+    /* letter-spacing: 5px; */
     opacity:1;
-    color:rgb(58, 56, 56);
+    color:rgb(43, 39, 41);
+    /* font-family:cursive */
     font-family: 'Times New Roman', Times, serif;
-    /* font-family: cursive,'Times New Roman', Times, serif; */
+}
+
+
+.tool{
+  margin-top:10px;
+  margin-left:10px;
+  margin-right:10px;
+
+}
+.change{
+  font-size: 5px;
 }
 </style>

@@ -13,13 +13,13 @@
 <h1 class="head1"><center>Offers On</center></h1>
   <div class="right" >
 		
-<img  class="img" @click="handleCategory(1)" src="blog-1.jpg" width="180px" height="120px" >
+<img  class="img" @click="handleCategory(1)" src="https://static.zipmoney.com.au/store-assets/Seed-Heritage-complete.png" width="180px" height="120px" >
 <br>
 
 
-		<img  class="img" @click="handleCategory(1)"  src="men.jpeg" width="180px" height="120px">
+		<img  class="img" @click="handleCategory(1)"  src="https://media.istockphoto.com/photos/young-man-in-shopping-looking-for-presents-consumerism-fashion-picture-id1214561965?k=20&m=1214561965&s=170667a&w=0&h=jQfb5__blmnnYZUu50Dlg-Kjy5e5DWt1i19EdISyIpE=" width="180px" height="120px">
 <br>
-		<img   class="img" @click="handleCategory(1)" src="s1.png" width="180px" height="120px">
+		<img   class="img" @click="handleCategory(1)" src="https://images.unsplash.com/photo-1584208124193-df98a65afaf6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8d2F0Y2glMjBzaG9wfGVufDB8fDB8fA%3D%3D&w=1000&q=80" width="180px" height="120px">
 <br>
 	</div>
 
@@ -121,7 +121,7 @@ export default {
 .img{
   /* border: 1px solid black; */
   border-radius: 20px;
-  margin: 8px;
+  margin: 2px;
 }
 .right{
 	/* flex-basis: 50%; */

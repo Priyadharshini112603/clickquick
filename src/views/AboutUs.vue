@@ -2,33 +2,50 @@
 <template>
 
 <v-app class="body">
-      <RightSideBar />
-  <v-container >
-        
-     <v-toolbar >
-      <!-- header1 -->
-       
-        <h1 class="head1">CLICK QUICK</h1>
-        
-        <v-spacer></v-spacer>
-        
-        <h1 class="search"><v-text-field
-          label="Find It ... Love It ... Buy It ..."
-          class="pt-8 d-none d-sm-flex"
-        
-          
-          prepend-inner-icon="mdi-magnify"
-          
-          
-          
-          rounded
-          outlined
-         
-        ></v-text-field></h1>
-        
+ <v-toolbar class="tool">
+        <div class="nightlihe"><h2>CLICK QUICK</h2></div>
 
+        <v-spacer></v-spacer>
+
+        <h1 class="search">
+          <v-text-field
+            label="Find It ... Love It ... Buy It ..."
+            class="pt-8 d-none d-sm-flex"
+         
+            rounded
+            outlined
+          ></v-text-field>
+        </h1>
+        <router-link to="/" >
+ <v-btn class="change ">
+      <v-icon class="con">mdi-magnify</v-icon> </v-btn ></router-link>
+   
+        <router-link to="/cart" >
+ <v-btn class="change ">
+      <v-icon class="con">mdi-cart-outline</v-icon> </v-btn ></router-link>
+      <!-- <router-link to="/Account" ><v-icon class="con">mdi-cart-outline</v-icon> </v-btn ></router-link> -->
+      <router-link to="/" >
+ <v-btn  class="change ">
+      <v-icon class="con">mdi-home-outline</v-icon> </v-btn ><br /></router-link>
+      <router-link to="/Account" >
+<v-btn  class="change ">
+      <v-icon class="con">mdi-account-circle</v-icon> </v-btn ></router-link>
+      
+<router-link to="/UserLogin" >
+      <v-btn class="change">
+      <v-icon class="con">mdi-login</v-icon> </v-btn ><br /></router-link>
+
+
+       <router-link to="/" >
+      <v-btn  class="change">
+      <v-icon class="con">mdi-logout</v-icon> </v-btn ></router-link>
+
+       <router-link to="/AboutUs" >
+      <v-btn class="change">
+      <v-icon class="con">mdi-account-star</v-icon> </v-btn ></router-link>
+    
       </v-toolbar>
-      <br> 
+      <br />
     
 
       <!-- <h4>{{product.title}}</h4>
@@ -54,7 +71,7 @@
         <v-spacer></v-spacer>
         
       <!-- </v-app-bar> -->
- </v-container>
+
   <div class="hero">
     <div class="container">
       <div class="hero_container">
@@ -100,14 +117,14 @@
 </template>
 
 <script>
-import RightSideBar from "../components/RightSideBar.vue";
+// import RightSideBar from "../components/RightSideBar.vue";
 
 
 export default {
    name: 'AboutUs',
    components: {
     // SideBar,
-    RightSideBar,
+    // RightSideBar,
     // HeaderPage
   },
   methods:{
@@ -131,7 +148,7 @@ export default {
 <style scoped>
 .search{
   padding: 15px;
-  width: 820px;
+  width: 620px;
 }
 
 v-tabs {
@@ -304,10 +321,52 @@ v-tabs {
 .black--text{
   /* font-style: italic; */
   font-weight: 900;
+  font-size: 30px;
+  margin-left:30px ;
   /* background:gold; */
   /* color: white; */
   /* background:gold; */
 /* background:purple; */
 }
+
+.product-price {
+  
+  color: rgb(12, 12, 12);
+
+  text-decoration: none;
+  font-size: 25px;
+ 
+  font-weight: bold;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.discount{
+  text-decoration: line-through;
+  color: grey;
+  font-size: 20px;
+}
+.sub{
+  color: #e02c2c;
+}
+
+.tool{
+  margin-top:10px;
+  margin-left:10px;
+  margin-right:10px;
+  height:1px;
+  flex:none;
+
+}
+.nightlihe{
+	font-size:20px;
+	font-weight: bold;
+	text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #f0bed7, 0 0 20px #d3acbf, 0 0 30px #ecdae6, 0 0 40px #cfa3b9, 0 0 50px #ecc8da, 0 0 55px #ebd4df;
+    /* letter-spacing: 5px; */
+    opacity:1;
+    color:rgb(43, 39, 41);
+    /* font-family:cursive */
+    font-family: 'Times New Roman', Times, serif;
+}
+
 
 </style>

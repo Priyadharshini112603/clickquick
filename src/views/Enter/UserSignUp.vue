@@ -13,6 +13,7 @@
           </div>
           <CENTER> <h3 class="h6" >Buyer</h3></CENTER>
           <br>
+<form class="form">
            
 
              <div class="form-group">
@@ -23,6 +24,7 @@
                 class="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
+                 v-model="name"
               />
             </div>
 
@@ -30,8 +32,9 @@
             <div class="form-group">
                 
               <label class="form"  for="exampleInputEmail1">Phone Number</label>
-              <input type="text" maxlength="10" pattern="\d{10}" class="form-control" title="Please enter exactly 10 digits" >
-              
+              <input type="text" maxlength="10" pattern="\d{10}" class="form-control" 
+              title="Please enter exactly 10 digits" key="" 
+               v-model="phonenumber">
             </div>
 
 
@@ -44,6 +47,7 @@
                 class="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
+                 v-model="email"
               />
             </div>
 
@@ -57,6 +61,7 @@
                 class="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
+                 v-model="password"
               />
             </div>
 
@@ -69,12 +74,13 @@
                 class="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
+                 v-model="repassword"
               />
             </div>
               <div class="form-group">
                  <center>
               
-                        <router-link to="/UserLogin" ><button type="submit" class="btn btn-primary btn-block">Register</button></router-link> 
+                        <router-link to="/UserLogin" ><button @click="formSubmit()" type="submit" class="btn btn-primary btn-block">Register</button></router-link> 
 
                  </center>
  
@@ -84,14 +90,13 @@
               <p>Create an Account</p> -->
                <div class="form-group">
                  <center>
-                     <router-link to="/UserLogin" >
-                 <button  type="submit" class="btn btn-primary btn-block">Login as User</button></router-link>
-                        <router-link to="/MerchantLogin" ><button type="submit" class="btn btn-primary btn-block">Login as Merchant</button></router-link> 
+               <router-link to="/UserLogin" >  <button class="btn btn-primary btn-block">Login as User</button></router-link>
+                        <router-link to="/MerchantLogin" ><button  class="btn btn-primary btn-block">Login as Merchant</button></router-link> 
 
                  </center>
                </div>
             </div>
-           
+</form>
          
           </div>
            </div>
@@ -112,47 +117,122 @@
 <script>
 
 export default {
-   name: '  MerchantSignUp',
+   name: '  UserSignUp',
+   data(){
+
+return {
+
+name: 'Enter name',
+phonenumber: 'Enter phonenumber',
+email: 'Enter email',
+
+password: '',
+
+repassword: '',
+
+
+
+
+
+// productCategory: "Men"
+
+}
+
+},
+methods: {
+  handle()
+  {
+    console.log("sucesss")
+  },
+
+formSubmit(e) {
+
+e.preventDefault();
+
+let currentObj = this;
+
+
+
+
+if(this.password==this.repassword){
+this.axios.post('http://10.20.2.203:8082/addUser', {
+
+
+
+userName: this.email,
+userPhone: this.phonenumber,
+userEmail: this.name,
+
+userpassword: this.password,
+
+
+// "userName": this.email,
+// "userPhone": this.phonenumber,
+// "userEmail": this.name,
+
+// "userPassword": this.password,
+// "userName: "Amit",
+//     "userEmail": "hello",
+//     "userPhone": "82783",
+//     "userPassword": "kdhjshdjhd"
+
+// repassword: '',
+
+// userPhone: "3434343432"
+
+
+
+})
+
+.then(function (response) {
+
+currentObj.output = response.data;
+
+})
+
+.catch(function (error) {
+
+currentObj.output = error;
+console.log("error")
+
+
+});
+
+}
+
+else{
+  alert("Enter Correct Creditials")
+}
+
+}
    
   
+}
 }
 </script>
 
 
 <style scoped>
 
+
 .icon{
   margin-left:540px;
 }
-
-  .Order {
-    text-align: center;
-  }
-  .login-form-container {
-    padding: 60px;
-    box-shadow: 0px 2px 5px 2px black;
-    margin-top: 30px;
-    height: 820px;
-  }
-  .form-control {
-    border-radius: 0%;
-    height: 30px;
-  }
-  .btn {
-    margin-top: 80px;
-    /* justify-content: space-around; */
-  }
-  
 .layout{
-  /* border: 1px solid black; */
+  border: 1px solid black;
 margin-left: 540px; 
 margin-top: 10px; 
 
   width: 400px;
-  height: 740px;
+  height: 750px;
 	box-shadow: 0 2px rosybrown, 0 3px #777;
   border-radius: 50px;
   
+}
+.Order
+{
+ 
+  /* text-align: center; */
 }
 
 
@@ -165,7 +245,7 @@ margin-top: 10px;
   height: 30px;
   width: 300px;
   /* margin-left: 10px; */
-  margin-left: -80px;
+  margin-left: -20px;
 
    /* justify-content: space-around; */
   
@@ -176,7 +256,7 @@ margin-top: 10px;
 
 }
 .form{
-  margin-left: -80px;
+  margin-left: -10px;
   font-weight: bold;
   font-family: 'Times New Roman', Times, serif;
 
@@ -185,7 +265,7 @@ margin-top: 10px;
  /* background: green; */
    margin-top:5px;
    /* justify-content: space-around; */
-   width: 200px;
+   width: 280px;
    margin-left: -25px;
    color:aliceblue;
   
@@ -199,7 +279,7 @@ margin-top: 10px;
     padding-top: 1px;
     margin-bottom: 14px;
     line-height: 0;
-  margin-left: -20px;
+  margin-left: 20px;
   width: 200px;
 
 }
@@ -222,9 +302,12 @@ div {
     padding: 0 10px 0 11px;
     text-align: center;
     white-space: nowrap;
-   margin-left: -20px;
+   margin-left: 20px;
   width: 200px;
   padding-bottom: 10px;
 
+}
+.form{
+  margin-left: -40px;
 }
 </style>

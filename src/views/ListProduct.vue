@@ -1,225 +1,52 @@
 <template>
   <v-app class="body">
-    <!-- <HeaderPage/> -->
-  
     <!-- <RightSideBar /> -->
+      <!-- header -->
+    
       <v-toolbar class="tool">
         <div class="nightlihe"><h2>CLICK QUICK</h2></div>
 
         <v-spacer></v-spacer>
 
-        <h1 class="search">
+        <!-- <h1 class="search">
           <v-text-field
             label="Find It ... Love It ... Buy It ..."
             class="pt-8 d-none d-sm-flex"
+          prepend-inner-icon="mdi-magnify"
          
             rounded
             outlined
           ></v-text-field>
-        </h1>
-        <router-link to="/" >
+        </h1> -->
+        <!-- <router-link to="/" >
  <v-btn class="change ">
-      <v-icon class="con">mdi-magnify</v-icon> </v-btn ></router-link>
-   
+      <v-icon class="con">mdi-magnify</v-icon> </v-btn ></router-link> -->
+<!--    
         <router-link to="/cart" >
  <v-btn class="change ">
-      <v-icon class="con">mdi-cart-outline</v-icon> </v-btn ></router-link>
+      <v-icon class="con">mdi-cart-outline</v-icon></v-btn ></router-link> -->
       <!-- <router-link to="/Account" ><v-icon class="con">mdi-cart-outline</v-icon> </v-btn ></router-link> -->
-      <router-link to="/" >
- <v-btn  class="change ">
-      <v-icon class="con">mdi-home-outline</v-icon> </v-btn ><br /></router-link>
+   
       <router-link to="/Account" >
 <v-btn  class="change ">
-      <v-icon class="con">mdi-account-circle</v-icon> </v-btn ></router-link>
+      <v-icon class="con">mdi-account-circle</v-icon></v-btn ></router-link>
       
-<router-link to="/UserLogin" >
+<!-- <router-link to="/UserLogin" >
       <v-btn class="change">
-      <v-icon class="con">mdi-login</v-icon> </v-btn ><br /></router-link>
+      <v-icon class="con">mdi-login</v-icon></v-btn ><br /></router-link> -->
 
 
-       <router-link to="/UserLogin" >
+       <router-link to="/" >
       <v-btn  class="change">
-      <v-icon class="con">mdi-logout</v-icon> </v-btn ></router-link>
+      <v-icon class="con">mdi-logout</v-icon></v-btn ></router-link>
 
        <router-link to="/AboutUs" >
       <v-btn class="change">
-      <v-icon class="con">mdi-account-star</v-icon> </v-btn ></router-link>
+      <v-icon class="con">mdi-account-star</v-icon></v-btn ></router-link>
     
       </v-toolbar>
       <br />
-      <!-- <v-container> -->
-      <!-- header2 -->
-      <v-app-bar class="vapp">
-        <!-- <v-tabs> -->
-          <v-tab class="black--text" @click="handleMen()"
-            >MEN'S CLOTHINGS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</v-tab
-          >
-          <v-tab class="black--text" @click="handleWomen()"
-            >WOMEN'S CLOTHINGS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</v-tab
-          >
-          <v-tab class="black--text" @click="handleElectronics()"
-            >ELECTRONICS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</v-tab
-          >
-          <v-tab class="black--text" @click="handleJewellery()"
-            >JEWELLERY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</v-tab
-          >
-        <!-- </v-tabs> -->
-        <v-spacer></v-spacer>
-      </v-app-bar>
-  <!-- </v-container> -->
-<div class="container">
-        <div class="slider-container has-scrollbar">
-          <div class="slider-item">
-            <img
-              src="banner-1.jpg"
-              alt="modern sunglasses"
-              class="banner-img"
-            />
-
-            <div class="banner-content">
-              <p class="banner-subtitle">Trending items</p>
-
-              <h2 class="banner-title">Women's latest fashion sale</h2>
-
-              <a href="#" class="banner-btn">Shop now</a>
-            </div>
-          </div>
-          <div class="slider-item">
-            <img
-              src="banner 16.png"
-              alt="new fashion summer sale"
-              class="banner-img"
-            />
-          </div>
-          <div class="slider-item">
-            <img
-              src="banner17.jpeg"
-              alt="new fashion summer sale"
-              class="banner-img"
-            />
-          </div>
-          
-
-          <div class="slider-item">
-            <img
-              src="banner-7.png"
-              alt="new fashion summer sale"
-              class="banner-img"
-            />
-          </div>
-
-          <div class="slider-item">
-            <img
-              src="banner-12.jpeg"
-              alt="new fashion summer sale"
-              class="banner-img"
-            />
-            <div class="banner-content">
-              <p class="banner-subtitle">Sale Offer</p>
-
-              <h2 class="banner-title">New fashion summer sale</h2>
-
-              <a href="#" class="banner-btn">Shop now</a>
-            </div>
-          </div>
-          <div class="slider-item">
-            <img
-              src="banner-8.jpeg"
-              alt="new fashion summer sale"
-              class="banner-img"
-            />
-          </div>
-
-          <div class="slider-item">
-            <img
-              src="banner-2.jpg"
-              alt="modern sunglasses"
-              class="banner-img"
-            />
-
-            <div class="banner-content">
-              <p class="banner-subtitle">Trending accessories</p>
-
-              <h2 class="banner-title">Modern sunglasses</h2>
-
-              <a href="#" class="banner-btn">Shop now</a>
-            </div>
-          </div>
-          <div class="slider-item">
-            <img
-              src="banner-10.jpeg"
-              alt="new fashion summer sale"
-              class="banner-img"
-            />
-          </div>
-
-          <div class="slider-item">
-            <img
-              src="banner13.jpg"
-              alt="new fashion summer sale"
-              class="banner-img"
-            />
-          </div>
-
-          <div class="slider-item">
-            <img
-              src="banner-3.jpg"
-              alt="new fashion summer sale"
-              class="banner-img"
-            />
-
-            <div class="banner-content">
-              <p class="banner-subtitle">Sale Offer</p>
-
-              <h2 class="banner-title">New fashion summer sale</h2>
-
-              <a href="#" class="banner-btn">Shop now</a>
-            </div>
-          </div>
-          <div class="slider-item">
-            <img
-              src="banner-10.jpg"
-              alt="new fashion summer sale"
-              class="banner-img"
-            />
-          </div>
-
-          <div class="slider-item">
-            <img
-              src="banner-6.jpeg"
-              alt="new fashion summer sale"
-              class="banner-img"
-            />
-          </div>
-
-          <div class="slider-item">
-            <img
-              src="banner-11.jpeg"
-              alt="new fashion summer sale"
-              class="banner-img"
-            />
-          </div>
-          <div class="slider-item">
-            <img
-              src="banner14.jpeg"
-              alt="new fashion summer sale"
-              class="banner-img"
-            />
-          </div>
-        </div>
-      </div>
-  <v-container>
-     <v-tabs 
-       
-  
-          class="black--text1">TRENDING NOW
-          
-
-        </v-tabs>
-        <v-spacer></v-spacer>
-        
-      <!-- </v-app-bar> -->
- </v-container>
+   
 
     <div class="product-items">
       <!-- single product -->
@@ -256,24 +83,13 @@
         </div>
       </div>
     </div>
-
-
-
-
-
-
-      
-      
-    
-     
   </v-app>
 </template>
 
 <script>
+// import RightSideBar from "../components/RightSideBar.vue";
 import { mapActions } from "vuex";
 import { mapGetters } from "vuex";
-import axios from "axios";
-
 
 export default {
   name: "Home",
@@ -312,34 +128,10 @@ export default {
     handleJewellery() {
       this.$router.push("jewellery");
     },
-    getInitialUsers() {
-      axios.get(`https://10.20.2.203.8081/pro`).then((response) => {
-        this.getProducts = response.data.data;
-      });
-    },
-    getNextUser() {
-      window.onscroll = () => {
-        let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
-        if (bottomOfWindow) {
-          axios.get(`https://10.20.2.203.8081/product/getallproduct`).then(response => {
-            this.getProducts.push(response.data.results[0]);
-          });
-        }
-      }
-    }
   },
-
-    beforeMount() {
-    this.getInitialUsers();
-  },
-  mounted() {
-    this.getNextUser();
-  }
 };
 </script>
 <style scoped>
-
-
 .head1 {
   margin: 1em 0 0.5em 0;
   /* color: #343434; */
@@ -408,10 +200,10 @@ export default {
 .v-text-field {
   color: black;
 }
-.search {
+/* .search {
   padding: 15px;
-  width: 620px;
-}
+  width: 420px;
+} */
 
 .headcon {
   background-image: url("https://st2.depositphotos.com/3199515/6996/v/950/depositphotos_69967429-stock-illustration-yellow-green-light-background.jpg");
@@ -434,10 +226,8 @@ export default {
    margin-top:10px;
   margin-left:35px;
   margin-right:10px;
-  margin-bottom:35px;
-
   width: 1350px;
-  height: 10px;
+  margin-bottom: 50px;
 
 }
 
@@ -916,4 +706,7 @@ img {
   margin-right:10px;
 
 }
+/* .change{
+  font-size: 5px;
+} */
 </style>

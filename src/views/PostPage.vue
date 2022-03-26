@@ -14,182 +14,176 @@
 
   <v-app class="body">
     <!-- <SideBar :drawer="drawer" /> -->
-    <RightSideBar />
-    <v-container>
-      <v-toolbar>
-        <!-- header1 -->
-
-        <h1 class="head1">CLICK QUICK</h1>
+      <!-- <HeaderPage/> -->
+  
+    <!-- <RightSideBar /> -->
+      <v-toolbar class="tool">
+        <div class="nightlihe"><h2>CLICK QUICK</h2></div>
 
         <v-spacer></v-spacer>
-        <br />
+
         <h1 class="search">
           <v-text-field
             label="Find It ... Love It ... Buy It ..."
             class="pt-8 d-none d-sm-flex"
-            
-            prepend-inner-icon="mdi-magnify"
-          
-            background-color="white"
+         
             rounded
             outlined
           ></v-text-field>
         </h1>
-      </v-toolbar>
-    </v-container>
-    <br />
-    <!-- <div class="product-card">
-      <h1>Category: {{product.category}}</h1>
-      <h4>{{product.title}}</h4>
+        <router-link to="/" >
+ <v-btn class="change ">
+      <v-icon class="con">mdi-magnify</v-icon> </v-btn ></router-link>
+   
+        <router-link to="/cart" >
+ <v-btn class="change ">
+      <v-icon class="con">mdi-cart-outline</v-icon> </v-btn ></router-link>
+      <!-- <router-link to="/Account" ><v-icon class="con">mdi-cart-outline</v-icon> </v-btn ></router-link> -->
+      <router-link to="/" >
+ <v-btn  class="change ">
+      <v-icon class="con">mdi-home-outline</v-icon> </v-btn ><br /></router-link>
+      <router-link to="/Account" >
+<v-btn  class="change ">
+      <v-icon class="con">mdi-account-circle</v-icon> </v-btn ></router-link>
       
+<router-link to="/UserLogin" >
+      <v-btn class="change">
+      <v-icon class="con">mdi-login</v-icon> </v-btn ><br /></router-link>
+
+
+       <router-link to="/" >
+      <v-btn  class="change">
+      <v-icon class="con">mdi-logout</v-icon> </v-btn ></router-link>
+
+       <router-link to="/AboutUs" >
+      <v-btn class="change">
+      <v-icon class="con">mdi-account-star</v-icon> </v-btn ></router-link>
     
-       <img class="laptop-photo" :src="product.image" alt="">
-      
-      <div class="product-info">
-        <div class="product-price">Price: Rs{{product.price}}</div>
-        <a href="#" class="product-button">Add to Cart</a>
-      </div>
-    </div> -->
-
-    <!-- <div class = "product-items"> -->
-    <!-- single product -->
-
-    <!-- <div class = "product">
-                        <div class = "product-content">
-                            <div class = "product-img">
-                               <img class="laptop-photo" :src="product.image" alt="">
-                            </div>
-                            <div class = "product-btns">
-                                <button type = "button" class = "btn-cart"> add to cart
-                                    <span><i class = "fas fa-plus"></i></span>
-                                </button>
-                                <button type = "button" class = "btn-buy"> buy now
-                                    <span><i class = "fas fa-shopping-cart"></i></span>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class = "product-info"> -->
-    <!-- <div class = "product-info-top"> -->
-    <!-- <center>
-                           
-                                <div class="price">
-                            <p class = "product-price"> &#x20B9;  {{product.price}}</p>
-                            </div> -->
-    <!-- </div> -->
-    <!-- <div  class = "product-name">{{product.title}}</div> -->
-    <!-- <div class = "product-cat">{{product.category}}</div> -->
-    <!-- <p class = "product-price">$ 150.00</p> -->
-    <!-- </center>
-                        </div>
-
-                        
-                    </div>
-</div> -->
+      </v-toolbar>
 
     <div id="container">
       <div class="product-details">
-        <!-- <h1>{{product.title}}</h1> -->
-        
+        <h2><b>{{product.productName}}</b></h2>
+        <br>
+        <br>
 
-        <select class="information" v-model="id">
-      {{product.id}}
-        </select>
-
+        <div class="information">
+     <!-- <b>Description:</b> -->
+      {{product.productDescription}}
+        </div>
+        <br>
+         <div class="information">
+      Sold By: {{product.defaultMerchantName}}
+        </div>
         <div class="control">
-          <!-- <button class="btn"> -->
-            <select class="price" v-model="price">₹ {{product.productId}}</select>
+          <button class="btn" @click="handlecart()">
+            <span class="price">₹ {{product.defaultMerchantPrice}}</span>
             <span class="shopping-cart"
               ><i class="fa fa-shopping-cart" aria-hidden="true"></i
             ></span>
-            <button class="buy" @submit="formsubmit">Add Cart</button>
-          <!-- </button> -->
+            <span class="buy">Add Cart</span>
+          </button>
         </div>
       </div>
 
       <div class="product-image">
-                             <div class="images1">          <img   :src="product.productImage" alt="" width="30px" height="30px"></div>
+                             <div>  <img   :src="product.productImage" alt="" width="100px" height="130px"></div>
 
 
        
       </div>
        <!-- <div class="product-image"> -->
-       <div class="info">
-          <!-- <h2>Description</h2> -->
-          <ul>
-            <!-- <div class="info1" ><strong>Ratings : </strong>{{product.rating.rate}}</div> -->
-            <!-- <div class="info1"><strong>In Stock: </strong>{{product.rating.count}}</div> -->
-            <!-- <li>Description : {{product.description}}</li> -->
-            <!-- <li><strong>Material: </strong>Eco-Friendly</li> -->
-          </ul>
-        </div>
-       </div>
+    </div>
     <!-- </div> -->
   </v-app>
 </template>
 
 <script>
-import RightSideBar from "../components/RightSideBar.vue";
+// import RightSideBar from "../components/RightSideBar.vue";
 // import SideBar from "../components/SideBar";
 export default {
   name: "productDetails",
   components: {
     // SideBar,
-    RightSideBar,
+    // RightSideBar,
   },
   created() {
     const productId = this.$route.params.id;
     this.axios
-      .get(`http://10.20.2.193:8999/product/getproductbyid/?id=${productId}`)
+      .get(`http://10.20.2.203:8081/product/getproductbyid?id=${productId}`)
       .then((resp) => {
-        this.product = resp.data;
+        this.product = resp.data.data;
       });
   },
   data() {
     return {
-      product: {},
-      id: "1",
-      price: 1
+      product:[],
+//       userid: '',
+// productid: '',
+// quantity: '',
+// merchantid:''
     };
   },
-  methods: {
+  methods:{
+    handlecart()
+    {
 
-formSubmit(e) {
-
-e.preventDefault();
 
 let currentObj = this;
 
 console.log(this)
+console.log(this.product.productId)
+console.log(this.product.defaultMerchantId)
 
-this.axios.post('http://10.20.2.193:8999/cart/addtocart', {
-price: this.price,
-id: this.id
+// console.log(this.product.productId)
+
+
+this.axios.post('http://10.20.2.203:8084/addtocart', {
+userid:1,
+productId:this.product.productId,
+
+quantity:1,
+merchantId:this.product.defaultMerchantId,
+
+// password:this.password,
+// repassword:this.repassword,
+
+
+
+
+
+
+
+// userPhone: "3434343432"
+
+
 
 })
 
 .then(function (response) {
 
 currentObj.output = response.data;
+alert("success")
+
 
 })
 
 .catch(function (error) {
 
 currentObj.output = error;
+alert("error")
+
 
 });
 
 }
 
 }
-};
+    };
 </script>
 
 <style scoped>
-/* body {
-  /* background-image: url("https://st2.depositphotos.com/3199515/6996/v/950/depositphotos_69967429-stock-illustration-yellow-green-light-background.jpg"); */
-/* } */ 
+
 .v-toolbar {
   background: gold;
 }
@@ -276,7 +270,7 @@ currentObj.output = error;
 
 .search {
   padding: 15px;
-  width: 820px;
+  width: 620px;
 }
 
 .headcon {
@@ -747,8 +741,8 @@ body {
   border-radius: 5px;
   overflow: hidden;
   margin: 5em auto;
-  height: 450px;
-  width: 700px;
+  height: 550px;
+  width: 1050px;
 }
 
 .product-details {
@@ -758,15 +752,19 @@ body {
   padding: 30px;
   height: 100%;
   float: left;
-  width: 40%;
+  width: 60%;
+  font-family: 'Times New Roman', Times, serif;
 }
 .information{
   overflow:scroll;
-  height: 190px;
+  height: 100px;
+  padding-bottom: 5px;
+  font-family: 'Times New Roman', Times, serif;
+
 
 }
 #container .product-details h1 {
-  font-family: "Bebas Neue", cursive;
+  /* font-family: "Bebas Neue", cursive; */
   display: inline-block;
   position: relative;
   font-size: 30px;
@@ -789,6 +787,7 @@ body {
   color: white;
   margin: 0;
   animation: chan-sh 6s ease infinite;
+  font-weight: bold;
 }
 
 .hint-star {
@@ -807,7 +806,7 @@ body {
 .control {
   position: absolute;
   bottom: 20%;
-  left: 22.8%;
+  /* left: 22.8%; */
 }
 .btn {
   transform: translateY(0px);
@@ -822,6 +821,8 @@ body {
   color: #eee;
   padding: 0;
   margin: 0;
+  width: 300px;
+
 }
 
 .btn:hover {
@@ -830,12 +831,14 @@ body {
 }
 
 .btn span {
-  font-family: "Farsan", cursive;
+  /* font-family: "Farsan", cursive; */
   transition: transform 0.3s;
   display: inline-block;
   padding: 10px 20px;
-  font-size: 1.2em;
+  font-size: 25px;
   margin: 0;
+  font-family: 'Times New Roman', Times, serif;
+
 }
 .btn .price,
 .shopping-cart {
@@ -845,7 +848,8 @@ body {
 
 .btn .price {
   transform: translateX(-10%);
-  padding-right: 15px;
+     padding-right: 10px;
+    margin-left: -45px;
 }
 
 .btn .shopping-cart {
@@ -875,19 +879,19 @@ body {
   display: inline-block;
   position: relative;
   overflow: hidden;
-  height:300px;
+  height:500px;
   /* float: right; */
-  width:300px;
+  width:400px;
   display: inline-block;
   margin-top:-10px;
   /* background: rosybrown; */
 }
 
 #container img {
-  width: 200px;
-  height: 200px;
+  width: 350px;
+  height: 400px;
   margin-top:60px;
-  margin-left:50px;
+  margin-right:100px;
 }
 
 .images1:hover{
@@ -957,5 +961,23 @@ body {
 
 .button{
   height: 20px;
+}
+.tool{
+  margin-top:10px;
+  margin-left:10px;
+  margin-right:10px;
+  height:1px;
+  flex:none;
+
+}
+.nightlihe{
+	font-size:20px;
+	font-weight: bold;
+	text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #f0bed7, 0 0 20px #d3acbf, 0 0 30px #ecdae6, 0 0 40px #cfa3b9, 0 0 50px #ecc8da, 0 0 55px #ebd4df;
+    /* letter-spacing: 5px; */
+    opacity:1;
+    color:rgb(43, 39, 41);
+    /* font-family:cursive */
+    font-family: 'Times New Roman', Times, serif;
 }
 </style> 

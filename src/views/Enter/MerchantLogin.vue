@@ -1,31 +1,39 @@
 <template>
   <div id="app">
-           <img class="icon" src="iconlogo.png" alt="" width="400px">
+      <img class="icon" src="iconlogo.png" alt="" width="400px">
+      
   <div class="layout"> 
       <div class="row d-flex justify-content-center">
-        <div class="col-5 text-left ">
+        <div class="col-5 text-left">
           <div class="d-flex justify-content-center">
             <img src="https://cdn0.iconfinder.com/data/icons/set-ui-app-android/32/8-512.png" width="150" alt="">
            
           </div>
           <CENTER> <h3 class="h6" >Seller</h3></CENTER>
           <br>
+<form class="form" @submit="formSubmit">
+
           <div >
+            
             <div class="form-group">
                 
-              <label class="form"  for="exampleInputEmail1">Email address</label>
+              <label class="form"  for="exampleInputEmail1" >Email address</label>
               <input
                 type="email"
                 class="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
+                v-model="email"
+                pattern=".+@globex\.com" size="30" 
               />
             </div>
             <div class="form-group">
               <label class="form" for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" />
+              <input type="password" class="form-control" id="exampleInputPassword1" 
+                v-model="password"
+              />
               <br>
-                <div class="form-group">
+              <div class="form-group">
                  <center>
               
                         <router-link to="/HomeMerchant" ><button type="submit" class="btn btn-primary btn-block">Login</button></router-link> 
@@ -40,20 +48,28 @@
 
 
 
+
               <!-- <h3>New To Click Quick</h3><br>
               <p>Create an Account</p> -->
                <div class="form-group">
                  <center>
-                        <router-link to="/UserLogin" ><button type="submit" class="btn btn-primary btn-block">Login as User</button></router-link> 
+                        <router-link to="/MerchantSignUp" ><button class="btn btn-primary">Sign Up as Merchant</button></router-link> 
 
-                
-       <router-link to="/UserSignUp" ><button type="submit" class="btn btn-primary btn-block">Sign up as User</button></router-link> 
+                 <!-- <button @click="login()" type="submit" class="btn btn-primary btn-block">Sign Up as Merchant</button> -->
+                        <router-link to="/UserLogin" ><button  class="btn btn-primary ">Login as User</button></router-link> 
+
                  </center>
                </div>
             </div>
            
          
           </div>
+
+
+
+</form>
+
+
            </div>
             
           </div>
@@ -72,17 +88,55 @@
 <script>
 
 export default {
-   name: 'MerchantLogin',
+   name: 'UserLogin',
+   
+data(){
+
+return {
+
+
+email: 'Enter email',
+
+password: '',
+
+
+
+// productCategory: "Men"
+
+}
+
+},
+methods: {
+formSubmit(e) {
+  e.preventDefault();
+ this.axios.get(`http://10.20.2.203:8082/check?username=${this.email}&password=${this.password}`).then(resp=>{
+        console.log(resp.data);
+        console.log("hello")
+        if(resp.data.result==true){
+          // console.log("sucess")
+          this.getusername(this.email)
+          this.$router.push("/HomeMerchant")
+        }else{
+          alert("resp.data.message")
+        }
+        
+      })
+
+}
+  
+}
 }
 </script>
 
 
 <style>
+
+
 .icon{
   margin-left:540px;
 }
 .layout{
-  /* border: 1px solid black; */
+  border: 1px solid black;
 margin-left: 540px; 
 margin-top: 10px; 
 
@@ -108,7 +162,7 @@ margin-top: 10px;
   height: 30px;
   width: 300px;
   /* margin-left: 10px; */
-  margin-left: -80px;
+  margin-left: -20px;
 
    /* justify-content: space-around; */
   
@@ -119,7 +173,7 @@ margin-top: 10px;
 
 }
 .form{
-  margin-left: -80px;
+  margin-left: -10px;
   font-weight: bold;
   font-family: 'Times New Roman', Times, serif;
 
@@ -128,7 +182,7 @@ margin-top: 10px;
  /* background: green; */
    margin-top:5px;
    /* justify-content: space-around; */
-   width: 200px;
+   width: 280px;
    margin-left: -25px;
    color:aliceblue;
   
@@ -142,7 +196,7 @@ margin-top: 10px;
     padding-top: 1px;
     margin-bottom: 14px;
     line-height: 0;
-  margin-left: -20px;
+  margin-left: 20px;
   width: 200px;
 
 }
@@ -165,9 +219,12 @@ div {
     padding: 0 10px 0 11px;
     text-align: center;
     white-space: nowrap;
-   margin-left: -20px;
+   margin-left: 20px;
   width: 200px;
   padding-bottom: 10px;
 
+}
+.form{
+  margin-left: -40px;
 }
 </style>
